@@ -6,7 +6,7 @@
               var xhttp = new XMLHttpRequest();
               xhttp.onreadystatechange = function() {
                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("demo").innerHTML = alert(this.responseText);
+                        alert(xhttp.domain.cookie);
                    }
               };
                xhttp.open("GET", "https://customeradmin.sodic.com/Maintenance", true);
